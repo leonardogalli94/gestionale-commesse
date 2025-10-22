@@ -908,7 +908,117 @@
                 document.getElementById('transImportoSpeseIva').value = totaleIva.toFixed(2);
             },
             
-            loadTransactions(commessaId) {
+            async loadTransactions(commessaId) {
+                const allTrans = await this.getTransazioni();
+                const trans = allTrans[commessaId] || {};
+                const tbody = document.querySelector('#transactionsTable tbody');
+                tbody.innerHTML = '';
+                
+                const keys = Object.keys(trans);
+                
+                if(keys.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:40px;">Nessuna transazione. Clicca "Nuova Transazione" per aggiungerne una!</td></tr>';
+                    
+                    document.getElementById('budgetRicavi').textContent = '€0.00';
+                    document.getElementById('budgetCosti').textContent = '€0.00';
+                    document.getElementById('budgetMargine').textContent = '€0.00';
+                    document.getElementById('consuntivoRicavi').textContent = '€0.00';
+                    document.getElementById('consuntivoCosti').textContent = '€0.00';
+                    document.getElementById('consuntivoMargine').textContent = '€0.00';
+                    return;
+                }
+                
+                let budgetRicavi = 0;
+                let budgetCosti = 0;
+                let consuntivoRicavi = 0;
+                let consuntivoCosti = 0;
+                
+                keys.forEach(id => {
+                    const t = trans[id];
+                    const row = tbody.insertRow();
+                    
+                    const importoBudget = t.importoBudget || 0;
+                    if(importoBudget > 0) {
+                        budgetRicavi += importoBudget;
+                    } else {
+                        budgetCosti += importoBudget;
+                    }
+                    
+                    if(t.dataConsuntivo) {
+                        const importoConsuntivo = t.importoConsuntivo !== undefined ? t.importoConsuntivo : t.importoBudget;
+                        if(importoConsuntivo > 0) {
+                            consuntivoRicavi += importoConsuntivo;
+                        } else {
+                            consuntivoCosti += importoConsuntivo;
+                        }
+                    }
+                    
+                    let tipoIcon = '';
+                    let dettagli = '-';
+                    let giornateDisplay = '-';
+                    let tariffaDisplay = '-';
+                    let ivaDisplay = '-';
+                    let importoBudgetIva = t.importoBudget || 0;
+                    
+                    if(t.tipo === 'ricavo') {
+                        tipoIcon = '💰 Ricavo';
+                        ivaDisplay = (t.iva || 0) + '%';
+                        
+                        const totale = Math.abs(t.importoBudget || 0);
+                        importoBudgetIva = totale * (1 + (t.iva || 0) / 100);
+                    } else if(t.tipo === 'giornate') {
+                        tipoIcon = '👨‍💼 Giornate';
+                        giornateDisplay = (t.giornate || 0).toString();
+                        tariffaDisplay = '€' + (t.tariffa || 0).toFixed(2);
+                        ivaDisplay = (t.iva || 0) + '%';
+                        dettagli = `${t.giornate || 0} gg × €${(t.tariffa || 0).toFixed(2)}`;
+                        
+                        const totale = Math.abs(t.importoBudget || 0);
+                        importoBudgetIva = -(totale * (1 + (t.iva || 0) / 100));
+                    } else if(t.tipo === 'margine') {
+                        tipoIcon = '📊 Margine';
+                        dettagli = t.percentualeMargine ? `${t.percentualeMargine}%` : '-';
+                    } else if(t.tipo === 'spese') {
+                        tipoIcon = '🧾 Spese';
+                        dettagli = t.categoriaSpese || '-';
+                        ivaDisplay = (t.iva || 0) + '%';
+                        
+                        const totale = Math.abs(t.importoBudget || 0);
+                        importoBudgetIva = -(totale * (1 + (t.iva || 0) / 100));
+                    }
+                    
+                    row.innerHTML = `
+                        <td><strong>${tipoIcon}</strong></td>
+                        <td>${t.descrizione || '-'}</td>
+                        <td>${dettagli}</td>
+                        <td>${giornateDisplay}</td>
+                        <td>${tariffaDisplay}</td>
+                        <td>${ivaDisplay}</td>
+                        <td>${t.dataBudget || '-'}</td>
+                        <td style="color: ${t.importoBudget >= 0 ? 'green' : 'red'}">€${(t.importoBudget || 0).toFixed(2)}</td>
+                        <td style="color: ${importoBudgetIva >= 0 ? 'green' : 'red'}; font-weight: bold;">€${importoBudgetIva.toFixed(2)}</td>
+                        <td>${t.dataConsuntivo || '-'}</td>
+                        <td style="color: ${(t.importoConsuntivo || importoBudgetIva) >= 0 ? 'green' : 'red'}; font-weight: bold;">${t.dataConsuntivo ? '€' + ((t.importoConsuntivo !== undefined ? t.importoConsuntivo : importoBudgetIva) || 0).toFixed(2) : '-'}</td>
+                        <td class="actions">
+                            <button class="btn btn-warning" onclick="app.editTransaction('${commessaId}', '${id}')">✏️</button>
+                            <button class="btn btn-danger" onclick="app.deleteTransaction('${commessaId}', '${id}', event)">🗑️</button>
+                        </td>
+                    `;
+                });
+                
+                const budgetMargine = budgetRicavi + budgetCosti;
+                const consuntivoMargine = consuntivoRicavi + consuntivoCosti;
+                
+                document.getElementById('budgetRicavi').textContent = '€' + budgetRicavi.toFixed(2);
+                document.getElementById('budgetCosti').textContent = '€' + budgetCosti.toFixed(2);
+                document.getElementById('budgetMargine').textContent = '€' + budgetMargine.toFixed(2);
+                document.getElementById('budgetMargine').style.color = budgetMargine >= 0 ? 'green' : 'red';
+                
+                document.getElementById('consuntivoRicavi').textContent = '€' + consuntivoRicavi.toFixed(2);
+                document.getElementById('consuntivoCosti').textContent = '€' + consuntivoCosti.toFixed(2);
+                document.getElementById('consuntivoMargine').textContent = '€' + consuntivoMargine.toFixed(2);
+                document.getElementById('consuntivoMargine').style.color = consuntivoMargine >= 0 ? 'green' : 'red';
+            },
                 const allTrans = this.getTransazioni();
                 const trans = allTrans[commessaId] || {};
                 const tbody = document.querySelector('#transactionsTable tbody');

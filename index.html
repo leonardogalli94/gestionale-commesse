@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionale Commesse</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-        
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -26,7 +20,6 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
-        
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -37,11 +30,7 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-        
-        .header h1 {
-            font-size: 2em;
-        }
-        
+        .header h1 { font-size: 2em; }
         .saldo-box {
             background: rgba(255,255,255,0.2);
             padding: 15px 25px;
@@ -51,34 +40,20 @@
             gap: 15px;
             flex-wrap: wrap;
         }
-        
-        .saldo-box label {
-            color: white;
-            font-weight: 600;
-        }
-        
+        .saldo-box label { color: white; font-weight: 600; }
         .saldo-box input {
             background: white;
             border: none;
             padding: 8px 12px;
             border-radius: 4px;
             font-size: 1em;
-        }
-        
-        .saldo-box input[type="number"] {
             width: 150px;
         }
-        
-        .saldo-box input[type="date"] {
-            width: 150px;
-        }
-        
         .tabs {
             display: flex;
             border-bottom: 2px solid #e0e0e0;
             background: #f5f5f5;
         }
-        
         .tab-btn {
             flex: 1;
             padding: 20px;
@@ -91,37 +66,21 @@
             transition: all 0.3s;
             border-bottom: 3px solid transparent;
         }
-        
         .tab-btn.active {
             color: #667eea;
             border-bottom-color: #667eea;
             background: white;
         }
-        
-        .content {
-            padding: 30px;
-            min-height: 400px;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
+        .content { padding: 30px; min-height: 400px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .form-group { margin-bottom: 20px; }
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
             color: #333;
         }
-        
         .form-group input, .form-group select {
             width: 100%;
             padding: 10px;
@@ -130,18 +89,15 @@
             font-size: 1em;
             transition: border 0.3s;
         }
-        
         .form-group input:focus, .form-group select:focus {
             outline: none;
             border-color: #667eea;
         }
-        
         .form-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
-        
         .btn {
             padding: 12px 30px;
             border: none;
@@ -151,51 +107,17 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-        }
-        
-        .btn-success {
-            background: #28a745;
-            color: white;
-        }
-        
-        .btn-success:hover {
-            background: #218838;
-        }
-        
-        .btn-danger {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background: #c82333;
-        }
-        
-        .btn-warning {
-            background: #ffc107;
-            color: #333;
-        }
-        
-        .btn-warning:hover {
-            background: #e0a800;
-        }
-        
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5568d3; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-warning { background: #ffc107; color: #333; }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
         th {
             background: #667eea;
             color: white;
@@ -203,62 +125,15 @@
             text-align: left;
             font-weight: 600;
         }
-        
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        tr:hover {
-            background: #f9f9f9;
-        }
-        
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .filter-bar {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .stat-card h3 {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
-        
-        .stat-card p {
-            opacity: 0.9;
-        }
-        
+        td { padding: 12px 15px; border-bottom: 1px solid #e0e0e0; }
+        tr:hover { background: #f9f9f9; }
+        .actions { display: flex; gap: 10px; }
         .commessa-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
-        
         .commessa-card {
             background: white;
             border: 2px solid #e0e0e0;
@@ -267,18 +142,12 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
         .commessa-card:hover {
             border-color: #667eea;
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
-        .commessa-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
+        .commessa-card h3 { color: #667eea; margin-bottom: 10px; }
         .modal {
             display: none;
             position: fixed;
@@ -289,7 +158,6 @@
             background: rgba(0,0,0,0.5);
             z-index: 1000;
         }
-        
         .modal-content {
             background: white;
             width: 90%;
@@ -300,35 +168,18 @@
             max-height: 85vh;
             overflow-y: auto;
         }
-        
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
         .close {
             font-size: 2em;
             cursor: pointer;
             color: #999;
         }
-        
-        .close:hover {
-            color: #333;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
-        }
-        
-        .empty-state h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        
+        .close:hover { color: #333; }
         .error-msg {
             background: #f8d7da;
             color: #721c24;
@@ -337,7 +188,6 @@
             margin: 10px 0;
             border-left: 4px solid #dc3545;
         }
-        
         .confirm-delete {
             background: #fff3cd !important;
             padding: 20px !important;
@@ -352,7 +202,7 @@
             <div class="saldo-box">
                 <div>
                     <label>💰 Saldo Iniziale:</label>
-                    <input type="number" id="saldoIniziale" placeholder="0" value="0">
+                    <input type="number" id="saldoIniziale" value="0">
                 </div>
                 <div>
                     <label>📅 Data Saldo:</label>
@@ -362,67 +212,18 @@
         </div>
         
         <div class="tabs">
-            <button class="tab-btn active" onclick="app.showTab('commesse', event)">📋 Commesse</button>
-            <button class="tab-btn" onclick="app.showTab('dashboard', event)">📊 Dashboard</button>
+            <button class="tab-btn active" onclick="showTab('commesse', event)">📋 Commesse</button>
+            <button class="tab-btn" onclick="showTab('dashboard', event)">📊 Dashboard</button>
         </div>
         
         <div class="content">
-            <!-- TAB COMMESSE -->
             <div id="commesse" class="tab-content active">
-                <button class="btn btn-primary" onclick="app.openNewCommessaModal()">➕ Nuova Commessa</button>
+                <button class="btn btn-primary" onclick="openNewCommessaModal()">➕ Nuova Commessa</button>
                 <div class="commessa-list" id="commessaList"></div>
             </div>
             
-            <!-- TAB DASHBOARD -->
             <div id="dashboard" class="tab-content">
-                <div class="filter-bar">
-                    <select id="filterCommessa" onchange="app.updateDashboard()">
-                        <option value="">Tutte le commesse</option>
-                    </select>
-                    <select id="filterReferente" onchange="app.updateDashboard()">
-                        <option value="">Tutti i referenti</option>
-                    </select>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3 id="statTotaleIncassi">€0</h3>
-                        <p>Incassi Totali</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="statTotalePagamenti">€0</h3>
-                        <p>Pagamenti Totali</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="statFlusso">€0</h3>
-                        <p>Flusso di Cassa</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="statContoFinale">€0</h3>
-                        <p>Conto Bancario Finale</p>
-                    </div>
-                </div>
-                
-                <!-- Grafico Flussi di Cassa -->
-                <div style="background: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <h2 style="margin-bottom: 20px; color: #667eea;">📊 Andamento Flussi di Cassa Mensili</h2>
-                    <canvas id="chartFlussi" style="max-height: 400px;"></canvas>
-                </div>
-                
-                <table id="dashboardTable">
-                    <thead>
-                        <tr>
-                            <th>Mese</th>
-                            <th>Anno</th>
-                            <th>Incassi</th>
-                            <th>Pagamenti</th>
-                            <th>Flusso</th>
-                            <th>Cumulato</th>
-                            <th>Conto Bancario</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <p>Dashboard in caricamento...</p>
             </div>
         </div>
     </div>
@@ -432,233 +233,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Nuova Commessa</h2>
-                <span class="close" onclick="app.closeModal('modalNewCommessa')">&times;</span>
+                <span class="close" onclick="closeModal('modalNewCommessa')">&times;</span>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Nome Commessa *</label>
-                    <input type="text" id="newCommessaNome" required>
+                    <input type="text" id="newCommessaNome">
                 </div>
                 <div class="form-group">
                     <label>Cliente *</label>
-                    <input type="text" id="newCommessaCliente" required>
+                    <input type="text" id="newCommessaCliente">
                 </div>
                 <div class="form-group">
                     <label>Referente *</label>
-                    <input type="text" id="newCommessaReferente" required>
+                    <input type="text" id="newCommessaReferente">
                 </div>
             </div>
-            <button class="btn btn-success" onclick="app.createCommessa()">✓ Crea Commessa</button>
-        </div>
-    </div>
-    
-    <!-- Modal Dettaglio Commessa -->
-    <div id="modalCommessa" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="commessaTitle"></h2>
-                <span class="close" onclick="app.closeModal('modalCommessa')">&times;</span>
-            </div>
-            
-            <!-- Specchietto Riassuntivo -->
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
-                    <h3 style="color: #ffc107; margin-bottom: 15px;">📋 BUDGET</h3>
-                    <div style="margin-bottom: 10px;">
-                        <span style="color: #666;">Ricavi:</span>
-                        <strong id="budgetRicavi" style="color: green; float: right; font-size: 1.2em;">€0.00</strong>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <span style="color: #666;">Costi:</span>
-                        <strong id="budgetCosti" style="color: red; float: right; font-size: 1.2em;">€0.00</strong>
-                    </div>
-                    <hr style="margin: 15px 0; border: none; border-top: 2px solid #e0e0e0;">
-                    <div>
-                        <span style="color: #666;">Margine:</span>
-                        <strong id="budgetMargine" style="float: right; font-size: 1.3em;">€0.00</strong>
-                    </div>
-                </div>
-                
-                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #667eea;">
-                    <h3 style="color: #667eea; margin-bottom: 15px;">✅ CONSUNTIVO</h3>
-                    <div style="margin-bottom: 10px;">
-                        <span style="color: #666;">Ricavi:</span>
-                        <strong id="consuntivoRicavi" style="color: green; float: right; font-size: 1.2em;">€0.00</strong>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <span style="color: #666;">Costi:</span>
-                        <strong id="consuntivoCosti" style="color: red; float: right; font-size: 1.2em;">€0.00</strong>
-                    </div>
-                    <hr style="margin: 15px 0; border: none; border-top: 2px solid #e0e0e0;">
-                    <div>
-                        <span style="color: #666;">Margine:</span>
-                        <strong id="consuntivoMargine" style="float: right; font-size: 1.3em;">€0.00</strong>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="btn btn-primary" onclick="app.openNewTransactionForm()">➕ Nuova Transazione</button>
-            
-            <div id="newTransactionForm" style="display:none; margin-top:20px; background:#f5f5f5; padding:20px; border-radius:8px;">
-                <h3>Nuova Transazione</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Descrizione</label>
-                        <input type="text" id="transDesc">
-                    </div>
-                    <div class="form-group">
-                        <label>Tipo *</label>
-                        <select id="transTipo">
-                            <option value="">Seleziona tipo</option>
-                            <option value="ricavo">💰 Ricavo</option>
-                            <option value="giornate">👨‍💼 Giornate Consulenti</option>
-                            <option value="margine">📊 Margine Linfa</option>
-                            <option value="spese">🧾 Spese Varie</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Data Budget *</label>
-                        <input type="date" id="transDataBudget">
-                    </div>
-                </div>
-                
-                <!-- Campi per Ricavo -->
-                <div id="fieldsRicavo" style="display:none;">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Importo Ricavo (senza IVA) *</label>
-                            <input type="number" id="transImportoRicavo" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>IVA (%)</label>
-                            <input type="number" id="transIvaRicavo" step="0.01" value="22" placeholder="22">
-                        </div>
-                        <div class="form-group">
-                            <label>Totale con IVA</label>
-                            <input type="number" id="transImportoRicavoIva" step="0.01" readonly style="background:#e0e0e0;">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Campi per Giornate Consulenti -->
-                <div id="fieldsGiornate" style="display:none;">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Numero Giornate *</label>
-                            <input type="number" id="transGiornate" step="0.5">
-                        </div>
-                        <div class="form-group">
-                            <label>Tariffa Giornaliera (€) - già comprensiva di 4% rivalsa *</label>
-                            <input type="number" id="transTariffa" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>IVA (%)</label>
-                            <input type="number" id="transIvaGiornate" step="0.01" value="22" placeholder="22">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Totale Calcolato (senza IVA)</label>
-                            <input type="number" id="transImportoGiornate" step="0.01" readonly style="background:#e0e0e0;">
-                        </div>
-                        <div class="form-group">
-                            <label>Totale con IVA</label>
-                            <input type="number" id="transImportoGiornateIva" step="0.01" readonly style="background:#e0e0e0;">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Campi per Margine -->
-                <div id="fieldsMargine" style="display:none;">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Importo Margine *</label>
-                            <input type="number" id="transImportoMargine" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>Percentuale (%)</label>
-                            <input type="number" id="transPercentualeMargine" step="0.01">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Campi per Spese -->
-                <div id="fieldsSpese" style="display:none;">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Importo Spese (senza IVA) *</label>
-                            <input type="number" id="transImportoSpese" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>IVA (%)</label>
-                            <input type="number" id="transIvaSpese" step="0.01" value="22" placeholder="22">
-                        </div>
-                        <div class="form-group">
-                            <label>Totale con IVA</label>
-                            <input type="number" id="transImportoSpeseIva" step="0.01" readonly style="background:#e0e0e0;">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Categoria</label>
-                            <input type="text" id="transCategoriaSpese" placeholder="es: Viaggio, Materiale, ecc.">
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="btn btn-success" onclick="app.addTransaction()">✓ Aggiungi</button>
-                <button class="btn btn-danger" onclick="app.closeNewTransactionForm()">✕ Annulla</button>
-            </div>
-            
-            <table id="transactionsTable" style="margin-top:20px;">
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Descrizione</th>
-                        <th>Dettagli</th>
-                        <th>Giornate</th>
-                        <th>Tariffa (4% rivalsa)</th>
-                        <th>IVA %</th>
-                        <th>Data Budget</th>
-                        <th>Importo Budget</th>
-                        <th>Importo Budget + IVA</th>
-                        <th>Data Consuntivo</th>
-                        <th>Importo Consuntivo (con IVA)</th>
-                        <th>Azioni</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
-    
-    <!-- Modal Modifica Transazione -->
-    <div id="modalEditTransaction" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Aggiungi Consuntivo</h2>
-                <span class="close" onclick="app.closeModal('modalEditTransaction')">&times;</span>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Data Consuntivo</label>
-                    <input type="date" id="editDataConsuntivo">
-                </div>
-                <div class="form-group">
-                    <label>Importo Consuntivo (opzionale, default = Budget)</label>
-                    <input type="number" id="editImportoConsuntivo" step="0.01" placeholder="Lascia vuoto per usare Budget">
-                </div>
-            </div>
-            <button class="btn btn-success" onclick="app.saveConsuntivo()">✓ Salva Consuntivo</button>
+            <button class="btn btn-success" onclick="createCommessa()">✓ Crea Commessa</button>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getDatabase, ref, set, push, get, remove, update, onValue } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+        import { getDatabase, ref, set, push, get, remove, update } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
         const firebaseConfig = {
             apiKey: "AIzaSyDdu4j4-A6Z5AwLOs0FDewHGjrybVVd-8U",
@@ -670,8 +267,8 @@
             appId: "1:499285657293:web:d3b4d58fc76529f7d74b84"
         };
 
-        const firebaseApp = initializeApp(firebaseConfig);
-        const db = getDatabase(firebaseApp);
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
         
         window.db = db;
         window.dbRef = ref;
@@ -680,923 +277,85 @@
         window.dbGet = get;
         window.dbRemove = remove;
         window.dbUpdate = update;
-        window.dbOnValue = onValue;
+        
+        console.log('Firebase initialized!');
     </script>
     
     <script>
-        const app = {
-            currentCommessaId: null,
-            currentTransactionId: null,
-            useFirebase: true,
+        // Funzioni globali
+        function showTab(tabName, event) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const btns = document.querySelectorAll('.tab-btn');
             
-            // Utility
-            generateId() {
-                return Date.now().toString(36) + Math.random().toString(36).substr(2);
-            },
+            tabs.forEach(t => t.classList.remove('active'));
+            btns.forEach(b => b.classList.remove('active'));
             
-            getData(key) {
-                if(this.useFirebase) return null;
-                const data = localStorage.getItem(key);
-                return data ? JSON.parse(data) : null;
-            },
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function openNewCommessaModal() {
+            document.getElementById('modalNewCommessa').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        async function createCommessa() {
+            const nome = document.getElementById('newCommessaNome').value.trim();
+            const cliente = document.getElementById('newCommessaCliente').value.trim();
+            const referente = document.getElementById('newCommessaReferente').value.trim();
             
-            setData(key, value) {
-                if(this.useFirebase) return;
-                localStorage.setItem(key, JSON.stringify(value));
-            },
-            
-            async getCommesse() {
-                if(!this.useFirebase) return this.getData('commesse') || {};
-                
-                const snapshot = await window.dbGet(window.dbRef(window.db, 'commesse'));
-                return snapshot.exists() ? snapshot.val() : {};
-            },
-            
-            async getTransazioni() {
-                if(!this.useFirebase) return this.getData('transazioni') || {};
-                
-                const snapshot = await window.dbGet(window.dbRef(window.db, 'transazioni'));
-                return snapshot.exists() ? snapshot.val() : {};
-            },
-            
-            async saveCommesse(commesse) {
-                if(this.useFirebase) return; // Salvataggio singolo in createCommessa
-                this.setData('commesse', commesse);
-            },
-            
-            async saveTransazioni(transazioni) {
-                if(this.useFirebase) return; // Salvataggio singolo in addTransaction
-                this.setData('transazioni', transazioni);
-            },
-            
-            showError(message, containerId) {
-                const container = document.getElementById(containerId || 'newTransactionForm');
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-msg';
-                errorDiv.innerHTML = '<strong>⚠️ ' + message + '</strong>';
-                
-                const existing = container.querySelector('.error-msg');
-                if(existing) existing.remove();
-                
-                container.insertBefore(errorDiv, container.firstChild);
-                setTimeout(() => errorDiv.remove(), 3000);
-            },
-            
-            // Tabs
-            showTab(tabName, event) {
-                const tabs = document.querySelectorAll('.tab-content');
-                const btns = document.querySelectorAll('.tab-btn');
-                
-                tabs.forEach(t => t.classList.remove('active'));
-                btns.forEach(b => b.classList.remove('active'));
-                
-                document.getElementById(tabName).classList.add('active');
-                event.target.classList.add('active');
-                
-                if(tabName === 'dashboard') {
-                    this.updateDashboard();
-                }
-            },
-            
-            // Saldo
-            async loadSaldo() {
-                if(this.useFirebase) {
-                    const snapshot = await window.dbGet(window.dbRef(window.db, 'saldoData'));
-                    const saldoData = snapshot.exists() ? snapshot.val() : { importo: 0, data: '' };
-                    document.getElementById('saldoIniziale').value = saldoData.importo;
-                    document.getElementById('dataSaldo').value = saldoData.data;
-                } else {
-                    const saldoData = this.getData('saldoData') || { importo: 0, data: '' };
-                    document.getElementById('saldoIniziale').value = saldoData.importo;
-                    document.getElementById('dataSaldo').value = saldoData.data;
-                }
-            },
-            
-            async saveSaldoData() {
-                const saldoData = {
-                    importo: parseFloat(document.getElementById('saldoIniziale').value) || 0,
-                    data: document.getElementById('dataSaldo').value
-                };
-                
-                if(this.useFirebase) {
-                    await window.dbSet(window.dbRef(window.db, 'saldoData'), saldoData);
-                } else {
-                    this.setData('saldoData', saldoData);
-                }
-            },
-            
-            // Modals
-            openNewCommessaModal() {
-                document.getElementById('modalNewCommessa').style.display = 'block';
-            },
-            
-            closeModal(modalId) {
-                document.getElementById(modalId).style.display = 'none';
-            },
-            
-            // Commesse
-            async createCommessa() {
-                const nome = document.getElementById('newCommessaNome').value.trim();
-                const cliente = document.getElementById('newCommessaCliente').value.trim();
-                const referente = document.getElementById('newCommessaReferente').value.trim();
-                
-                if(!nome || !cliente || !referente) {
-                    this.showError('Compila tutti i campi obbligatori!', 'modalNewCommessa');
-                    return;
-                }
-                
-                const newCommessa = {
-                    nome: nome,
-                    cliente: cliente,
-                    referente: referente,
-                    createdAt: new Date().toISOString()
-                };
-                
-                if(this.useFirebase) {
-                    await window.dbSet(window.dbPush(window.dbRef(window.db, 'commesse')), newCommessa);
-                } else {
-                    const commesse = await this.getCommesse();
-                    const id = this.generateId();
-                    commesse[id] = newCommessa;
-                    await this.saveCommesse(commesse);
-                }
-                
-                document.getElementById('newCommessaNome').value = '';
-                document.getElementById('newCommessaCliente').value = '';
-                document.getElementById('newCommessaReferente').value = '';
-                
-                this.closeModal('modalNewCommessa');
-                await this.loadCommesse();
-            },
-            
-            async loadCommesse() {
-                const commesse = await this.getCommesse();
-                const list = document.getElementById('commessaList');
-                list.innerHTML = '';
-                
-                const keys = Object.keys(commesse);
-                
-                if(keys.length === 0) {
-                    list.innerHTML = '<div class="empty-state"><h2>📋</h2><p>Nessuna commessa ancora. Clicca "Nuova Commessa" per iniziare!</p></div>';
-                    return;
-                }
-                
-                keys.forEach(id => {
-                    const c = commesse[id];
-                    const card = document.createElement('div');
-                    card.className = 'commessa-card';
-                    card.onclick = () => this.openCommessa(id, c);
-                    card.innerHTML = `
-                        <h3>${c.nome}</h3>
-                        <p><strong>Cliente:</strong> ${c.cliente}</p>
-                        <p><strong>Referente:</strong> ${c.referente}</p>
-                    `;
-                    list.appendChild(card);
-                });
-            },
-            
-            openCommessa(id, data) {
-                this.currentCommessaId = id;
-                document.getElementById('commessaTitle').textContent = data.nome;
-                document.getElementById('modalCommessa').style.display = 'block';
-                this.loadTransactions(id);
-            },
-            
-            // Transazioni
-            handleTipoChange() {
-                const tipo = document.getElementById('transTipo').value;
-                
-                document.getElementById('fieldsRicavo').style.display = 'none';
-                document.getElementById('fieldsGiornate').style.display = 'none';
-                document.getElementById('fieldsMargine').style.display = 'none';
-                document.getElementById('fieldsSpese').style.display = 'none';
-                
-                if(tipo === 'ricavo') {
-                    document.getElementById('fieldsRicavo').style.display = 'block';
-                } else if(tipo === 'giornate') {
-                    document.getElementById('fieldsGiornate').style.display = 'block';
-                } else if(tipo === 'margine') {
-                    document.getElementById('fieldsMargine').style.display = 'block';
-                } else if(tipo === 'spese') {
-                    document.getElementById('fieldsSpese').style.display = 'block';
-                }
-            },
-            
-            calcolaImportoRicavo() {
-                const importo = parseFloat(document.getElementById('transImportoRicavo').value) || 0;
-                const iva = parseFloat(document.getElementById('transIvaRicavo').value) || 0;
-                const totaleIva = importo * (1 + iva / 100);
-                document.getElementById('transImportoRicavoIva').value = totaleIva.toFixed(2);
-            },
-            
-            calcolaImportoGiornate() {
-                const giornate = parseFloat(document.getElementById('transGiornate').value) || 0;
-                const tariffa = parseFloat(document.getElementById('transTariffa').value) || 0;
-                const iva = parseFloat(document.getElementById('transIvaGiornate').value) || 0;
-                
-                const totale = giornate * tariffa;
-                const totaleIva = totale * (1 + iva / 100);
-                
-                document.getElementById('transImportoGiornate').value = totale.toFixed(2);
-                document.getElementById('transImportoGiornateIva').value = totaleIva.toFixed(2);
-            },
-            
-            calcolaImportoSpese() {
-                const importo = parseFloat(document.getElementById('transImportoSpese').value) || 0;
-                const iva = parseFloat(document.getElementById('transIvaSpese').value) || 0;
-                const totaleIva = importo * (1 + iva / 100);
-                document.getElementById('transImportoSpeseIva').value = totaleIva.toFixed(2);
-            },
-            
-            async loadTransactions(commessaId) {
-                const allTrans = await this.getTransazioni();
-                const trans = allTrans[commessaId] || {};
-                const tbody = document.querySelector('#transactionsTable tbody');
-                tbody.innerHTML = '';
-                
-                const keys = Object.keys(trans);
-                
-                if(keys.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:40px;">Nessuna transazione. Clicca "Nuova Transazione" per aggiungerne una!</td></tr>';
-                    
-                    document.getElementById('budgetRicavi').textContent = '€0.00';
-                    document.getElementById('budgetCosti').textContent = '€0.00';
-                    document.getElementById('budgetMargine').textContent = '€0.00';
-                    document.getElementById('consuntivoRicavi').textContent = '€0.00';
-                    document.getElementById('consuntivoCosti').textContent = '€0.00';
-                    document.getElementById('consuntivoMargine').textContent = '€0.00';
-                    return;
-                }
-                
-                let budgetRicavi = 0;
-                let budgetCosti = 0;
-                let consuntivoRicavi = 0;
-                let consuntivoCosti = 0;
-                
-                keys.forEach(id => {
-                    const t = trans[id];
-                    const row = tbody.insertRow();
-                    
-                    const importoBudget = t.importoBudget || 0;
-                    if(importoBudget > 0) {
-                        budgetRicavi += importoBudget;
-                    } else {
-                        budgetCosti += importoBudget;
-                    }
-                    
-                    if(t.dataConsuntivo) {
-                        const importoConsuntivo = t.importoConsuntivo !== undefined ? t.importoConsuntivo : t.importoBudget;
-                        if(importoConsuntivo > 0) {
-                            consuntivoRicavi += importoConsuntivo;
-                        } else {
-                            consuntivoCosti += importoConsuntivo;
-                        }
-                    }
-                    
-                    let tipoIcon = '';
-                    let dettagli = '-';
-                    let giornateDisplay = '-';
-                    let tariffaDisplay = '-';
-                    let ivaDisplay = '-';
-                    let importoBudgetIva = t.importoBudget || 0;
-                    
-                    if(t.tipo === 'ricavo') {
-                        tipoIcon = '💰 Ricavo';
-                        ivaDisplay = (t.iva || 0) + '%';
-                        
-                        const totale = Math.abs(t.importoBudget || 0);
-                        importoBudgetIva = totale * (1 + (t.iva || 0) / 100);
-                    } else if(t.tipo === 'giornate') {
-                        tipoIcon = '👨‍💼 Giornate';
-                        giornateDisplay = (t.giornate || 0).toString();
-                        tariffaDisplay = '€' + (t.tariffa || 0).toFixed(2);
-                        ivaDisplay = (t.iva || 0) + '%';
-                        dettagli = `${t.giornate || 0} gg × €${(t.tariffa || 0).toFixed(2)}`;
-                        
-                        const totale = Math.abs(t.importoBudget || 0);
-                        importoBudgetIva = -(totale * (1 + (t.iva || 0) / 100));
-                    } else if(t.tipo === 'margine') {
-                        tipoIcon = '📊 Margine';
-                        dettagli = t.percentualeMargine ? `${t.percentualeMargine}%` : '-';
-                    } else if(t.tipo === 'spese') {
-                        tipoIcon = '🧾 Spese';
-                        dettagli = t.categoriaSpese || '-';
-                        ivaDisplay = (t.iva || 0) + '%';
-                        
-                        const totale = Math.abs(t.importoBudget || 0);
-                        importoBudgetIva = -(totale * (1 + (t.iva || 0) / 100));
-                    }
-                    
-                    row.innerHTML = `
-                        <td><strong>${tipoIcon}</strong></td>
-                        <td>${t.descrizione || '-'}</td>
-                        <td>${dettagli}</td>
-                        <td>${giornateDisplay}</td>
-                        <td>${tariffaDisplay}</td>
-                        <td>${ivaDisplay}</td>
-                        <td>${t.dataBudget || '-'}</td>
-                        <td style="color: ${t.importoBudget >= 0 ? 'green' : 'red'}">€${(t.importoBudget || 0).toFixed(2)}</td>
-                        <td style="color: ${importoBudgetIva >= 0 ? 'green' : 'red'}; font-weight: bold;">€${importoBudgetIva.toFixed(2)}</td>
-                        <td>${t.dataConsuntivo || '-'}</td>
-                        <td style="color: ${(t.importoConsuntivo || importoBudgetIva) >= 0 ? 'green' : 'red'}; font-weight: bold;">${t.dataConsuntivo ? '€' + ((t.importoConsuntivo !== undefined ? t.importoConsuntivo : importoBudgetIva) || 0).toFixed(2) : '-'}</td>
-                        <td class="actions">
-                            <button class="btn btn-warning" onclick="app.editTransaction('${commessaId}', '${id}')">✏️</button>
-                            <button class="btn btn-danger" onclick="app.deleteTransaction('${commessaId}', '${id}', event)">🗑️</button>
-                        </td>
-                    `;
-                });
-                
-                const budgetMargine = budgetRicavi + budgetCosti;
-                const consuntivoMargine = consuntivoRicavi + consuntivoCosti;
-                
-                document.getElementById('budgetRicavi').textContent = '€' + budgetRicavi.toFixed(2);
-                document.getElementById('budgetCosti').textContent = '€' + budgetCosti.toFixed(2);
-                document.getElementById('budgetMargine').textContent = '€' + budgetMargine.toFixed(2);
-                document.getElementById('budgetMargine').style.color = budgetMargine >= 0 ? 'green' : 'red';
-                
-                document.getElementById('consuntivoRicavi').textContent = '€' + consuntivoRicavi.toFixed(2);
-                document.getElementById('consuntivoCosti').textContent = '€' + consuntivoCosti.toFixed(2);
-                document.getElementById('consuntivoMargine').textContent = '€' + consuntivoMargine.toFixed(2);
-                document.getElementById('consuntivoMargine').style.color = consuntivoMargine >= 0 ? 'green' : 'red';
-            },
-                const allTrans = this.getTransazioni();
-                const trans = allTrans[commessaId] || {};
-                const tbody = document.querySelector('#transactionsTable tbody');
-                tbody.innerHTML = '';
-                
-                const keys = Object.keys(trans);
-                
-                if(keys.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:40px;">Nessuna transazione. Clicca "Nuova Transazione" per aggiungerne una!</td></tr>';
-                    
-                    document.getElementById('budgetRicavi').textContent = '€0.00';
-                    document.getElementById('budgetCosti').textContent = '€0.00';
-                    document.getElementById('budgetMargine').textContent = '€0.00';
-                    document.getElementById('consuntivoRicavi').textContent = '€0.00';
-                    document.getElementById('consuntivoCosti').textContent = '€0.00';
-                    document.getElementById('consuntivoMargine').textContent = '€0.00';
-                    return;
-                }
-                
-                let budgetRicavi = 0;
-                let budgetCosti = 0;
-                let consuntivoRicavi = 0;
-                let consuntivoCosti = 0;
-                
-                keys.forEach(id => {
-                    const t = trans[id];
-                    const row = tbody.insertRow();
-                    
-                    const importoBudget = t.importoBudget || 0;
-                    if(importoBudget > 0) {
-                        budgetRicavi += importoBudget;
-                    } else {
-                        budgetCosti += importoBudget;
-                    }
-                    
-                    if(t.dataConsuntivo) {
-                        const importoConsuntivo = t.importoConsuntivo !== undefined ? t.importoConsuntivo : t.importoBudget;
-                        if(importoConsuntivo > 0) {
-                            consuntivoRicavi += importoConsuntivo;
-                        } else {
-                            consuntivoCosti += importoConsuntivo;
-                        }
-                    }
-                    
-                    let tipoIcon = '';
-                    let dettagli = '-';
-                    let giornateDisplay = '-';
-                    let tariffaDisplay = '-';
-                    let ivaDisplay = '-';
-                    let importoBudgetIva = t.importoBudget || 0;
-                    
-                    if(t.tipo === 'ricavo') {
-                        tipoIcon = '💰 Ricavo';
-                        ivaDisplay = (t.iva || 0) + '%';
-                        
-                        // Calcola importo con IVA
-                        const totale = Math.abs(t.importoBudget || 0);
-                        importoBudgetIva = totale * (1 + (t.iva || 0) / 100);
-                    } else if(t.tipo === 'giornate') {
-                        tipoIcon = '👨‍💼 Giornate';
-                        giornateDisplay = (t.giornate || 0).toString();
-                        tariffaDisplay = '€' + (t.tariffa || 0).toFixed(2);
-                        ivaDisplay = (t.iva || 0) + '%';
-                        dettagli = `${t.giornate || 0} gg × €${(t.tariffa || 0).toFixed(2)}`;
-                        
-                        // Calcola importo con IVA
-                        const totale = Math.abs(t.importoBudget || 0);
-                        importoBudgetIva = -(totale * (1 + (t.iva || 0) / 100));
-                    } else if(t.tipo === 'margine') {
-                        tipoIcon = '📊 Margine';
-                        dettagli = t.percentualeMargine ? `${t.percentualeMargine}%` : '-';
-                    } else if(t.tipo === 'spese') {
-                        tipoIcon = '🧾 Spese';
-                        dettagli = t.categoriaSpese || '-';
-                        ivaDisplay = (t.iva || 0) + '%';
-                        
-                        // Calcola importo con IVA
-                        const totale = Math.abs(t.importoBudget || 0);
-                        importoBudgetIva = -(totale * (1 + (t.iva || 0) / 100));
-                    }
-                    
-                    row.innerHTML = `
-                        <td><strong>${tipoIcon}</strong></td>
-                        <td>${t.descrizione || '-'}</td>
-                        <td>${dettagli}</td>
-                        <td>${giornateDisplay}</td>
-                        <td>${tariffaDisplay}</td>
-                        <td>${ivaDisplay}</td>
-                        <td>${t.dataBudget || '-'}</td>
-                        <td style="color: ${t.importoBudget >= 0 ? 'green' : 'red'}">€${(t.importoBudget || 0).toFixed(2)}</td>
-                        <td style="color: ${importoBudgetIva >= 0 ? 'green' : 'red'}; font-weight: bold;">€${importoBudgetIva.toFixed(2)}</td>
-                        <td>${t.dataConsuntivo || '-'}</td>
-                        <td style="color: ${(t.importoConsuntivo || importoBudgetIva) >= 0 ? 'green' : 'red'}; font-weight: bold;">${t.dataConsuntivo ? '€' + ((t.importoConsuntivo !== undefined ? t.importoConsuntivo : importoBudgetIva) || 0).toFixed(2) : '-'}</td>
-                        <td class="actions">
-                            <button class="btn btn-warning" onclick="app.editTransaction('${commessaId}', '${id}')">✏️</button>
-                            <button class="btn btn-danger" onclick="app.deleteTransaction('${commessaId}', '${id}', event)">🗑️</button>
-                        </td>
-                    `;
-                });
-                
-                const budgetMargine = budgetRicavi + budgetCosti;
-                const consuntivoMargine = consuntivoRicavi + consuntivoCosti;
-                
-                document.getElementById('budgetRicavi').textContent = '€' + budgetRicavi.toFixed(2);
-                document.getElementById('budgetCosti').textContent = '€' + budgetCosti.toFixed(2);
-                document.getElementById('budgetMargine').textContent = '€' + budgetMargine.toFixed(2);
-                document.getElementById('budgetMargine').style.color = budgetMargine >= 0 ? 'green' : 'red';
-                
-                document.getElementById('consuntivoRicavi').textContent = '€' + consuntivoRicavi.toFixed(2);
-                document.getElementById('consuntivoCosti').textContent = '€' + consuntivoCosti.toFixed(2);
-                document.getElementById('consuntivoMargine').textContent = '€' + consuntivoMargine.toFixed(2);
-                document.getElementById('consuntivoMargine').style.color = consuntivoMargine >= 0 ? 'green' : 'red';
-            },
-            
-            openNewTransactionForm() {
-                document.getElementById('newTransactionForm').style.display = 'block';
-                document.getElementById('transTipo').addEventListener('change', () => this.handleTipoChange());
-                document.getElementById('transImportoRicavo').addEventListener('input', () => this.calcolaImportoRicavo());
-                document.getElementById('transIvaRicavo').addEventListener('input', () => this.calcolaImportoRicavo());
-                document.getElementById('transGiornate').addEventListener('input', () => this.calcolaImportoGiornate());
-                document.getElementById('transTariffa').addEventListener('input', () => this.calcolaImportoGiornate());
-                document.getElementById('transIvaGiornate').addEventListener('input', () => this.calcolaImportoGiornate());
-                document.getElementById('transImportoSpese').addEventListener('input', () => this.calcolaImportoSpese());
-                document.getElementById('transIvaSpese').addEventListener('input', () => this.calcolaImportoSpese());
-            },
-            
-            closeNewTransactionForm() {
-                document.getElementById('newTransactionForm').style.display = 'none';
-                document.getElementById('transDesc').value = '';
-                document.getElementById('transTipo').value = '';
-                document.getElementById('transDataBudget').value = '';
-                document.getElementById('transImportoRicavo').value = '';
-                document.getElementById('transGiornate').value = '';
-                document.getElementById('transTariffa').value = '';
-                document.getElementById('transImportoGiornate').value = '';
-                document.getElementById('transImportoMargine').value = '';
-                document.getElementById('transPercentualeMargine').value = '';
-                document.getElementById('transImportoSpese').value = '';
-                document.getElementById('transCategoriaSpese').value = '';
-                
-                document.getElementById('fieldsRicavo').style.display = 'none';
-                document.getElementById('fieldsGiornate').style.display = 'none';
-                document.getElementById('fieldsMargine').style.display = 'none';
-                document.getElementById('fieldsSpese').style.display = 'none';
-            },
-            
-            async addTransaction() {
-                const desc = document.getElementById('transDesc').value.trim();
-                const tipo = document.getElementById('transTipo').value;
-                const dataBudget = document.getElementById('transDataBudget').value;
-                
-                if(!tipo || !dataBudget) {
-                    this.showError('Seleziona il tipo e inserisci la data Budget!');
-                    return;
-                }
-                
-                let importoBudget = 0;
-                let extraData = {};
-                
-                if(tipo === 'ricavo') {
-                    const importo = parseFloat(document.getElementById('transImportoRicavo').value);
-                    const iva = parseFloat(document.getElementById('transIvaRicavo').value) || 22;
-                    
-                    if(!importo || importo <= 0) {
-                        this.showError('Inserisci un importo ricavo valido!');
-                        return;
-                    }
-                    importoBudget = Math.abs(importo);
-                    extraData.iva = iva;
-                } else if(tipo === 'giornate') {
-                    const giornate = parseFloat(document.getElementById('transGiornate').value);
-                    const tariffa = parseFloat(document.getElementById('transTariffa').value);
-                    const iva = parseFloat(document.getElementById('transIvaGiornate').value) || 22;
-                    
-                    if(!giornate || giornate <= 0) {
-                        this.showError('Inserisci un numero di giornate valido!');
-                        return;
-                    }
-                    if(!tariffa || tariffa <= 0) {
-                        this.showError('Inserisci una tariffa giornaliera valida!');
-                        return;
-                    }
-                    importoBudget = -(giornate * tariffa);
-                    extraData.giornate = giornate;
-                    extraData.tariffa = tariffa;
-                    extraData.iva = iva;
-                } else if(tipo === 'margine') {
-                    const importo = parseFloat(document.getElementById('transImportoMargine').value);
-                    if(isNaN(importo)) {
-                        this.showError('Inserisci un importo margine valido!');
-                        return;
-                    }
-                    importoBudget = importo;
-                    const perc = parseFloat(document.getElementById('transPercentualeMargine').value);
-                    if(perc) extraData.percentualeMargine = perc;
-                } else if(tipo === 'spese') {
-                    const importo = parseFloat(document.getElementById('transImportoSpese').value);
-                    const iva = parseFloat(document.getElementById('transIvaSpese').value) || 22;
-                    
-                    if(!importo || importo <= 0) {
-                        this.showError('Inserisci un importo spese valido!');
-                        return;
-                    }
-                    importoBudget = -(Math.abs(importo));
-                    extraData.categoriaSpese = document.getElementById('transCategoriaSpese').value.trim();
-                    extraData.iva = iva;
-                }
-                
-                const newTrans = {
-                    descrizione: desc,
-                    tipo: tipo,
-                    dataBudget: dataBudget,
-                    importoBudget: importoBudget,
-                    ...extraData
-                };
-                
-                if(this.useFirebase) {
-                    await window.dbSet(
-                        window.dbPush(window.dbRef(window.db, `transazioni/${this.currentCommessaId}`)),
-                        newTrans
-                    );
-                } else {
-                    const allTrans = await this.getTransazioni();
-                    if(!allTrans[this.currentCommessaId]) {
-                        allTrans[this.currentCommessaId] = {};
-                    }
-                    
-                    const id = this.generateId();
-                    allTrans[this.currentCommessaId][id] = newTrans;
-                    
-                    await this.saveTransazioni(allTrans);
-                }
-                
-                this.closeNewTransactionForm();
-                await this.loadTransactions(this.currentCommessaId);
-            },
-            
-            editTransaction(commessaId, transId) {
-                this.currentCommessaId = commessaId;
-                this.currentTransactionId = transId;
-                
-                const allTrans = this.getTransazioni();
-                const trans = allTrans[commessaId][transId];
-                
-                document.getElementById('editDataConsuntivo').value = trans.dataConsuntivo || '';
-                document.getElementById('editImportoConsuntivo').value = trans.importoConsuntivo !== undefined ? trans.importoConsuntivo : '';
-                document.getElementById('modalEditTransaction').style.display = 'block';
-            },
-            
-            async saveConsuntivo() {
-                const dataConsuntivo = document.getElementById('editDataConsuntivo').value;
-                const importoConsuntivo = document.getElementById('editImportoConsuntivo').value;
-                
-                if(!dataConsuntivo) {
-                    this.showError('Inserisci la data Consuntivo!', 'modalEditTransaction');
-                    return;
-                }
-                
-                const updates = {
-                    dataConsuntivo: dataConsuntivo
-                };
-                
-                if(importoConsuntivo !== '') {
-                    updates.importoConsuntivo = parseFloat(importoConsuntivo);
-                }
-                
-                if(this.useFirebase) {
-                    await window.dbUpdate(
-                        window.dbRef(window.db, `transazioni/${this.currentCommessaId}/${this.currentTransactionId}`),
-                        updates
-                    );
-                } else {
-                    const allTrans = await this.getTransazioni();
-                    Object.assign(allTrans[this.currentCommessaId][this.currentTransactionId], updates);
-                    await this.saveTransazioni(allTrans);
-                }
-                
-                this.closeModal('modalEditTransaction');
-                await this.loadTransactions(this.currentCommessaId);
-            },
-            
-            async confirmDelete(commessaId, transId) {
-                if(this.useFirebase) {
-                    await window.dbRemove(window.dbRef(window.db, `transazioni/${commessaId}/${transId}`));
-                } else {
-                    const allTrans = await this.getTransazioni();
-                    delete allTrans[commessaId][transId];
-                    await this.saveTransazioni(allTrans);
-                }
-                await this.loadTransactions(commessaId);
-            },
-            
-            deleteTransaction(commessaId, transId, event) {
-                const row = event.target.closest('tr');
-                row.classList.add('confirm-delete');
-                row.innerHTML = `
-                    <td colspan="12">
-                        <strong>⚠️ Sei sicuro di voler eliminare questa transazione?</strong>
-                        <button class="btn btn-danger" onclick="app.confirmDelete('${commessaId}', '${transId}')" style="margin-left: 20px;">✓ Sì</button>
-                        <button class="btn" onclick="app.loadTransactions('${commessaId}')" style="margin-left: 10px;">✕ No</button>
-                    </td>
-                `;
-            },
-            
-            // Dashboard
-            updateDashboard() {
-                const commesse = this.getCommesse();
-                const allTrans = this.getTransazioni();
-                const saldoData = this.getData('saldoData') || { importo: 0, data: '' };
-                const saldoIniziale = saldoData.importo;
-                const dataSaldo = saldoData.data ? new Date(saldoData.data) : null;
-                
-                const filterCommessa = document.getElementById('filterCommessa');
-                const filterReferente = document.getElementById('filterReferente');
-                
-                filterCommessa.innerHTML = '<option value="">Tutte le commesse</option>';
-                filterReferente.innerHTML = '<option value="">Tutti i referenti</option>';
-                
-                const referentiSet = new Set();
-                
-                Object.keys(commesse).forEach(cId => {
-                    const c = commesse[cId];
-                    const opt = document.createElement('option');
-                    opt.value = cId;
-                    opt.textContent = c.nome;
-                    filterCommessa.appendChild(opt);
-                    referentiSet.add(c.referente);
-                });
-                
-                referentiSet.forEach(ref => {
-                    const opt = document.createElement('option');
-                    opt.value = ref;
-                    opt.textContent = ref;
-                    filterReferente.appendChild(opt);
-                });
-                
-                let totaleIncassi = 0;
-                let totalePagamenti = 0;
-                let dataByMonth = {};
-                
-                const selectedCommessa = filterCommessa.value;
-                const selectedReferente = filterReferente.value;
-                
-                Object.keys(allTrans).forEach(commessaId => {
-                    const commessaData = commesse[commessaId];
-                    if(!commessaData) return;
-                    
-                    if(selectedCommessa && selectedCommessa !== commessaId) return;
-                    if(selectedReferente && selectedReferente !== commessaData.referente) return;
-                    
-                    const trans = allTrans[commessaId];
-                    
-                    Object.keys(trans).forEach(transId => {
-                        const t = trans[transId];
-                        
-                        const importo = t.dataConsuntivo ? (t.importoConsuntivo !== undefined ? t.importoConsuntivo : t.importoBudget) : t.importoBudget;
-                        const data = t.dataConsuntivo || t.dataBudget;
-                        
-                        if(!data) return;
-                        
-                        const date = new Date(data);
-                        
-                        if(dataSaldo && date < dataSaldo) return;
-                        
-                        const monthKey = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`;
-                        
-                        if(!dataByMonth[monthKey]) {
-                            dataByMonth[monthKey] = { incassi: 0, pagamenti: 0, flusso: 0 };
-                        }
-                        
-                        if(importo > 0) {
-                            dataByMonth[monthKey].incassi += importo;
-                            totaleIncassi += importo;
-                        } else {
-                            dataByMonth[monthKey].pagamenti += importo;
-                            totalePagamenti += importo;
-                        }
-                        dataByMonth[monthKey].flusso += importo;
-                    });
-                });
-                
-                const sortedMonths = Object.keys(dataByMonth).sort();
-                
-                let cumulato = 0;
-                let contoCorrente = saldoIniziale;
-                const tableData = [];
-                
-                sortedMonths.forEach(month => {
-                    const [year, monthNum] = month.split('-');
-                    const data = dataByMonth[month];
-                    cumulato += data.flusso;
-                    contoCorrente += data.flusso;
-                    
-                    const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 
-                                       'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-                    
-                    tableData.push({
-                        mese: monthNames[parseInt(monthNum) - 1],
-                        anno: year,
-                        incassi: data.incassi,
-                        pagamenti: data.pagamenti,
-                        flusso: data.flusso,
-                        cumulato: cumulato,
-                        conto: contoCorrente
-                    });
-                });
-                
-                document.getElementById('statTotaleIncassi').textContent = '€' + totaleIncassi.toFixed(2);
-                document.getElementById('statTotalePagamenti').textContent = '€' + totalePagamenti.toFixed(2);
-                document.getElementById('statFlusso').textContent = '€' + (totaleIncassi + totalePagamenti).toFixed(2);
-                document.getElementById('statContoFinale').textContent = '€' + contoCorrente.toFixed(2);
-                
-                const tbody = document.querySelector('#dashboardTable tbody');
-                tbody.innerHTML = '';
-                
-                if(tableData.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:40px;">Nessun dato disponibile.</td></tr>';
-                    return;
-                }
-                
-                tableData.forEach(row => {
-                    const tr = tbody.insertRow();
-                    tr.innerHTML = `
-                        <td><strong>${row.mese}</strong></td>
-                        <td>${row.anno}</td>
-                        <td style="color: green; font-weight: bold">€${row.incassi.toFixed(2)}</td>
-                        <td style="color: red; font-weight: bold">€${row.pagamenti.toFixed(2)}</td>
-                        <td style="font-weight: bold; color: ${row.flusso >= 0 ? 'green' : 'red'}">€${row.flusso.toFixed(2)}</td>
-                        <td style="background: #fff3cd">€${row.cumulato.toFixed(2)}</td>
-                        <td style="background: #e3f2fd; font-weight: bold; font-size: 1.1em">€${row.conto.toFixed(2)}</td>
-                    `;
-                });
-                
-                // Crea grafico
-                this.createChart(tableData);
-            },
-            
-            createChart(tableData) {
-                const canvas = document.getElementById('chartFlussi');
-                const ctx = canvas.getContext('2d');
-                
-                // Pulisci canvas
-                canvas.width = canvas.offsetWidth;
-                canvas.height = 400;
-                
-                if(tableData.length === 0) {
-                    ctx.fillStyle = '#999';
-                    ctx.font = '16px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Nessun dato disponibile', canvas.width / 2, canvas.height / 2);
-                    return;
-                }
-                
-                const padding = 60;
-                const chartWidth = canvas.width - padding * 2;
-                const chartHeight = canvas.height - padding * 2;
-                
-                // Trova min e max per scaling
-                const flussi = tableData.map(d => d.flusso);
-                const maxFlusso = Math.max(...flussi, 0);
-                const minFlusso = Math.min(...flussi, 0);
-                const range = maxFlusso - minFlusso;
-                
-                // Calcola posizione asse zero
-                const zeroY = padding + chartHeight * (maxFlusso / range);
-                
-                // Disegna asse X (zero)
-                ctx.strokeStyle = '#333';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(padding, zeroY);
-                ctx.lineTo(canvas.width - padding, zeroY);
-                ctx.stroke();
-                
-                // Disegna griglia orizzontale
-                ctx.strokeStyle = '#e0e0e0';
-                ctx.lineWidth = 1;
-                for(let i = 0; i <= 4; i++) {
-                    const y = padding + (chartHeight / 4) * i;
-                    ctx.beginPath();
-                    ctx.moveTo(padding, y);
-                    ctx.lineTo(canvas.width - padding, y);
-                    ctx.stroke();
-                    
-                    // Label valori
-                    const value = maxFlusso - (range / 4) * i;
-                    ctx.fillStyle = '#666';
-                    ctx.font = '12px Arial';
-                    ctx.textAlign = 'right';
-                    ctx.fillText('€' + value.toFixed(0), padding - 10, y + 4);
-                }
-                
-                // Disegna barre
-                const barWidth = chartWidth / tableData.length * 0.7;
-                const barSpacing = chartWidth / tableData.length;
-                
-                tableData.forEach((data, index) => {
-                    const x = padding + barSpacing * index + (barSpacing - barWidth) / 2;
-                    const flusso = data.flusso;
-                    
-                    if(flusso >= 0) {
-                        // Barra positiva (verde)
-                        const barHeight = (flusso / range) * chartHeight;
-                        const y = zeroY - barHeight;
-                        
-                        ctx.fillStyle = '#28a745';
-                        ctx.fillRect(x, y, barWidth, barHeight);
-                        
-                        // Bordo
-                        ctx.strokeStyle = '#1e7e34';
-                        ctx.lineWidth = 1;
-                        ctx.strokeRect(x, y, barWidth, barHeight);
-                    } else {
-                        // Barra negativa (rosso)
-                        const barHeight = (Math.abs(flusso) / range) * chartHeight;
-                        
-                        ctx.fillStyle = '#dc3545';
-                        ctx.fillRect(x, zeroY, barWidth, barHeight);
-                        
-                        // Bordo
-                        ctx.strokeStyle = '#c82333';
-                        ctx.lineWidth = 1;
-                        ctx.strokeRect(x, zeroY, barWidth, barHeight);
-                    }
-                    
-                    // Label mese
-                    ctx.fillStyle = '#333';
-                    ctx.font = '11px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.save();
-                    ctx.translate(x + barWidth / 2, canvas.height - padding + 15);
-                    ctx.rotate(-Math.PI / 4);
-                    ctx.fillText(data.mese.substr(0, 3) + ' ' + data.anno, 0, 0);
-                    ctx.restore();
-                    
-                    // Valore sulla barra
-                    ctx.fillStyle = '#fff';
-                    ctx.font = 'bold 11px Arial';
-                    ctx.textAlign = 'center';
-                    const valueY = flusso >= 0 ? zeroY - (flusso / range) * chartHeight - 5 : zeroY + (Math.abs(flusso) / range) * chartHeight + 15;
-                    ctx.fillText('€' + flusso.toFixed(0), x + barWidth / 2, valueY);
-                });
-                
-                // Titolo assi
-                ctx.fillStyle = '#333';
-                ctx.font = 'bold 14px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText('Mese', canvas.width / 2, canvas.height - 10);
-                
-                ctx.save();
-                ctx.translate(15, canvas.height / 2);
-                ctx.rotate(-Math.PI / 2);
-                ctx.fillText('Flusso di Cassa (€)', 0, 0);
-                ctx.restore();
-                
-                // Legenda
-                const legendY = 20;
-                ctx.fillStyle = '#28a745';
-                ctx.fillRect(canvas.width - 150, legendY, 20, 15);
-                ctx.fillStyle = '#333';
-                ctx.font = '12px Arial';
-                ctx.textAlign = 'left';
-                ctx.fillText('Positivo', canvas.width - 125, legendY + 12);
-                
-                ctx.fillStyle = '#dc3545';
-                ctx.fillRect(canvas.width - 150, legendY + 25, 20, 15);
-                ctx.fillStyle = '#333';
-                ctx.fillText('Negativo', canvas.width - 125, legendY + 37);
+            if(!nome || !cliente || !referente) {
+                alert('Compila tutti i campi!');
+                return;
             }
-        };
+            
+            const newCommessa = {
+                nome: nome,
+                cliente: cliente,
+                referente: referente,
+                createdAt: new Date().toISOString()
+            };
+            
+            await window.dbSet(window.dbPush(window.dbRef(window.db, 'commesse')), newCommessa);
+            
+            document.getElementById('newCommessaNome').value = '';
+            document.getElementById('newCommessaCliente').value = '';
+            document.getElementById('newCommessaReferente').value = '';
+            
+            closeModal('modalNewCommessa');
+            loadCommesse();
+        }
+        
+        async function loadCommesse() {
+            const snapshot = await window.dbGet(window.dbRef(window.db, 'commesse'));
+            const list = document.getElementById('commessaList');
+            list.innerHTML = '';
+            
+            if(!snapshot.exists()) {
+                list.innerHTML = '<p style="text-align:center; padding:40px;">Nessuna commessa. Clicca "Nuova Commessa" per iniziare!</p>';
+                return;
+            }
+            
+            const commesse = snapshot.val();
+            Object.keys(commesse).forEach(id => {
+                const c = commesse[id];
+                const card = document.createElement('div');
+                card.className = 'commessa-card';
+                card.innerHTML = `
+                    <h3>${c.nome}</h3>
+                    <p><strong>Cliente:</strong> ${c.cliente}</p>
+                    <p><strong>Referente:</strong> ${c.referente}</p>
+                `;
+                list.appendChild(card);
+            });
+        }
         
         // Init
-        document.addEventListener('DOMContentLoaded', async function() {
-            await app.loadSaldo();
-            await app.loadCommesse();
-            
-            document.getElementById('saldoIniziale').addEventListener('change', () => app.saveSaldoData());
-            document.getElementById('dataSaldo').addEventListener('change', () => app.saveSaldoData());
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCommesse();
         });
     </script>
 </body>
